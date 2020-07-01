@@ -4,9 +4,9 @@ export default StyleSheet.create({
   container: {
     position: 'absolute',
     top: 0,
-    left: '-100%',
+   /* left: '-100%',
     width: '200%',
-    paddingLeft: '50%',
+    paddingLeft: '50%',*/
   },
 
   text: {

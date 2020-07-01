@@ -94,7 +94,7 @@ export default class Label extends PureComponent {
       transform: [{
         scale: labelAnimation.interpolate({
           inputRange: [0, 1],
-          outputRange: [1, activeFontSize / fontSize],
+          outputRange: [1, 1],
         }),
       }, {
         translateY: labelAnimation.interpolate({
@@ -110,8 +110,8 @@ export default class Label extends PureComponent {
     };
 
     return (
-      <Animated.View style={[styles.container, containerStyle]}>
-        <Animated.Text style={[styles.text, style, textStyle]} {...props}>
+      <Animated.View style={[styles.container, containerStyle, { backgroundColor: 'black', paddingLeft: 10, paddingRight: 10}]}>
+        <Animated.Text style={[styles.text, style, textStyle,]} {...props}>
           {label}
         </Animated.Text>
       </Animated.View>
