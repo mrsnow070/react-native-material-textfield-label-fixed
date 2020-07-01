@@ -170,12 +170,15 @@ export default class TextField extends PureComponent {
 
     let labelState = labelStateFromProps(this.props, { text })? 1 : 0;
     let focusState = errorStateFromProps(this.props)? -1 : 0;
+    let fontState = errorStateFromProps(this.props)? -1 : 0;
+
 
     this.state = {
       text,
       error,
 
       focusAnimation: new Animated.Value(focusState),
+      fontAnimation: new Animated.Value(fontState),
       labelAnimation: new Animated.Value(labelState),
 
       receivedFocus: false,
@@ -218,7 +221,7 @@ export default class TextField extends PureComponent {
   }
 
   startFocusAnimation() {
-    let { focusAnimation } = this.state;
+    let { focusAnimation, fontAnimation } = this.state;
     let { animationDuration: duration } = this.props;
 
     let options = {
@@ -226,6 +229,7 @@ export default class TextField extends PureComponent {
       duration,
     };
 
+    startAnimation(fontAnimation, options, this.onFocusAnimationEnd);
     startAnimation(focusAnimation, options, this.onFocusAnimationEnd);
   }
 
@@ -555,7 +559,7 @@ export default class TextField extends PureComponent {
   }
 
   renderHelper() {
-    let { focusAnimation, error } = this.state;
+    let { focusAnimation, error, fontAnimation } = this.state;
 
     let {
       title,
@@ -593,6 +597,7 @@ export default class TextField extends PureComponent {
       error,
       disabled,
       focusAnimation,
+      fontAnimation,
     };
 
     return (
@@ -634,7 +639,7 @@ export default class TextField extends PureComponent {
   }
 
   render() {
-    let { labelAnimation, focusAnimation } = this.state;
+    let { labelAnimation, focusAnimation, fontAnimation } = this.state;
     let {
       editable,
       disabled,
@@ -689,6 +694,7 @@ export default class TextField extends PureComponent {
 
       focusAnimation,
       labelAnimation,
+      fontAnimation
     };
 
     let lineProps = {
