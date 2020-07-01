@@ -72,7 +72,7 @@ export default class TextField extends PureComponent {
 
     fontSize: PropTypes.number,
     labelFontSize: PropTypes.number,
-
+    backgroundLabelColor: PropTypes.string,
     contentInset: PropTypes.shape({
       top: PropTypes.number,
       label: PropTypes.number,
@@ -504,6 +504,7 @@ export default class TextField extends PureComponent {
       fontSize,
       labelFontSize,
       labelTextStyle,
+      backgroundLabelColor,
     } = this.props;
 
     return (
@@ -514,6 +515,7 @@ export default class TextField extends PureComponent {
         offset={offset}
         label={label}
         style={labelTextStyle}
+        backgroundLabelColor={backgroundLabelColor}
       />
     );
   }
@@ -574,9 +576,9 @@ export default class TextField extends PureComponent {
     let contentInset = this.contentInset();
 
     let containerStyle =  {
-      paddingLeft: contentInset.left,
-      paddingRight: contentInset.right,
-      minHeight: contentInset.bottom,
+      paddingLeft: 0,
+      paddingRight: 0,
+      minHeight: 0,
     };
 
     let styleProps = {
@@ -601,7 +603,7 @@ export default class TextField extends PureComponent {
     };
 
     return (
-      <View style={[styles.helperContainer, containerStyle]}>
+      <View style={[styles.helperContainer, containerStyle, {marginTop: -2}]}>
         <Helper {...helperProps} />
         <Counter {...counterProps} />
       </View>

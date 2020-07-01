@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import { Animated } from 'react-native';
+import { Animated, View } from 'react-native';
 
 import styles from './styles';
 
@@ -89,9 +89,12 @@ export default class Helper extends PureComponent {
     };
 
     return (
-      <Animated.Text style={[styles.text, style, textStyle]}>
-        {text}
-      </Animated.Text>
+        <View style={{width: '100%', backgroundColor: 'rgba(231, 76, 60, 1)'}}>
+          <Animated.Text style={[styles.text, style, textStyle, {color: 'white'}]}>
+            {text}
+          </Animated.Text>
+        </View>
+
     );
   }
 }

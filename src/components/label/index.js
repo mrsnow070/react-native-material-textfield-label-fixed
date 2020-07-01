@@ -28,10 +28,6 @@ export default class Label extends PureComponent {
       .instanceOf(Animated.Value)
       .isRequired,
 
-    fontAnimation: PropTypes
-        .instanceOf(Animated.Value)
-        .isRequired,
-
     labelAnimation: PropTypes
       .instanceOf(Animated.Value)
       .isRequired,
@@ -49,6 +45,7 @@ export default class Label extends PureComponent {
 
     style: Animated.Text.propTypes.style,
     label: PropTypes.string,
+    backgroundLabelColor: PropTypes.string,
   };
 
   render() {
@@ -66,7 +63,7 @@ export default class Label extends PureComponent {
       style,
       focusAnimation,
       labelAnimation,
-      fontAnimation,
+      backgroundLabelColor,
       ...props
     } = this.props;
 
@@ -115,14 +112,8 @@ export default class Label extends PureComponent {
     };
 
     return (
-      <Animated.View style={[styles.container, containerStyle, { backgroundColor: 'black', paddingLeft: 10, paddingRight: 10, }]}>
-        <Animated.Text style={[styles.text, style, textStyle, {/*{
-          fontSize: fontAnimation.interpolate({
-            inputRange: [0, 1],
-            outputRange: [21, 16],
-          }),
-          minHeight: 50
-        }*/}]} {...props}>
+      <Animated.View style={[styles.container, containerStyle, { backgroundColor: backgroundLabelColor ? backgroundLabelColor : 'transparent', paddingLeft: 10, paddingRight: 10, }]}>
+        <Animated.Text style={[styles.text, style, textStyle, {color: 'white'}]} {...props}>
           {label}
         </Animated.Text>
       </Animated.View>
