@@ -89,7 +89,8 @@ export default class Helper extends PureComponent {
     };
 
     return (
-        <View style={{width: '100%', backgroundColor: 'rgba(231, 76, 60, 1)'}}>
+        <View style={{width: '100%', backgroundColor: 'rgba(231, 76, 60, 1)', minHeight:50, justifyContent: 'center'
+        }}>
           <Animated.Text style={[styles.text, style, textStyle, {color: 'white'}]}>
             {text}
           </Animated.Text>
